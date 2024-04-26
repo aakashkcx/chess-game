@@ -1,0 +1,17 @@
+.chess-square {
+  width: calc(100% / 8);
+  height: calc(100% / 8);
+}
+
+.chess-square.light {
+  background-color: white;
+}
+
+.chess-square.dark {
+  background-color: gray;
+}
+
+.chess-piece {
+  width: 100%;
+  height: 100%;
+}

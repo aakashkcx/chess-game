@@ -1,0 +1,12 @@
+.chess-board {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  width: min(85vh, 85vw);
+  height: min(85vh, 85vw);
+  margin: auto;
+  border: 1px solid gray;
+}
+
+.chess-board.flipped {
+  flex-wrap: wrap;
+}
