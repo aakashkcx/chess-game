@@ -11,6 +11,30 @@
   background-color: gray;
 }
 
+.chess-square.light.selected {
+  background-color: hsl(100, 60%, 80%);
+}
+
+.chess-square.dark.selected {
+  background-color: hsl(100, 40%, 60%);
+}
+
+.chess-square.light.move {
+  background-color: hsl(55, 50%, 80%);
+}
+
+.chess-square.dark.move {
+  background-color: hsl(55, 40%, 60%);
+}
+
+.chess-square.light.previous {
+  background-color: hsl(340, 40%, 70%);
+}
+
+.chess-square.dark.previous {
+  background-color: hsl(340, 20%, 60%);
+}
+
 .chess-piece {
   width: 100%;
   height: 100%;

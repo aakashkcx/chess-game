@@ -1,8 +1,6 @@
 import { ColorPiece } from "@aakashkcx/chess-engine";
 import { clsx } from "clsx";
 
-import "./ChessSquare.css";
-
 import BD from "../assets/bdt.svg";
 import BL from "../assets/blt.svg";
 import KD from "../assets/kdt.svg";
@@ -16,17 +14,37 @@ import QL from "../assets/qlt.svg";
 import RD from "../assets/rdt.svg";
 import RL from "../assets/rlt.svg";
 
+import "./ChessSquare.css";
+
 interface ChessSquareProps {
   index: number;
   piece: ColorPiece;
+  selected?: boolean;
+  move?: boolean;
+  previous?: boolean;
+  onClick?: () => void;
 }
 
-export function ChessSquare({ index, piece }: ChessSquareProps) {
-  const className = clsx("chess-square", isDark(index) ? "dark" : "light");
+export function ChessSquare({
+  index,
+  piece,
+  selected,
+  move,
+  previous,
+  onClick,
+}: ChessSquareProps) {
   const svg = getPieceSVG(piece);
 
+  const className = clsx(
+    "chess-square",
+    isDark(index) ? "dark" : "light",
+    selected && "selected",
+    move && "move",
+    previous && "previous"
+  );
+
   return (
-    <div className={className}>
+    <div className={className} onClick={onClick}>
       {svg && <img src={svg} className="chess-piece" />}
     </div>
   );
