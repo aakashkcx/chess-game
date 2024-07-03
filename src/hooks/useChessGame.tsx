@@ -80,5 +80,15 @@ export function useChessGame() {
     setGame(getGameData(gameRef));
   }
 
-  return { gameRef, ...game, makeMove, takeBack };
+  /**
+   * Search for the best move.
+   * @param timeMS The search time in milliseconds, default 1000 ms.
+   * @returns The best move.
+   */
+  function search(timeMS?: number): Move {
+    const move = gameRef.search(timeMS);
+    return move;
+  }
+
+  return { ...game, makeMove, takeBack, search };
 }
