@@ -1,13 +1,20 @@
-import { ChessGame } from "./components/ChessGame";
+import { Route, Routes } from "react-router-dom";
+
+import { ChessAI } from "./routes/ChessAI";
+import { ChessAnalysis } from "./routes/ChessAnalysis";
+import { ChessLocal } from "./routes/ChessLocal";
+import { Home } from "./routes/Home";
 
 import "./App.css";
 
 function App() {
   return (
-    <>
-      <h1>Chess Game</h1>
-      <ChessGame />
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/ai" element={<ChessAI />} />
+      <Route path="/local" element={<ChessLocal />} />
+      <Route path="/analysis" element={<ChessAnalysis />} />
+    </Routes>
   );
 }
 
