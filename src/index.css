@@ -5,13 +5,26 @@
 }
 
 :root {
-  font-family: system-ui, sans-serif;
+  --font: system-ui, sans-serif;
+  --scale: 85;
+  --max-width: calc(var(--scale) * 1vw);
+  --max-height: calc(var(--scale) * 1vh);
+  --max: min(var(--max-width), var(--max-height));
+
+  font-family: var(--font);
   font-size: 100%;
 }
 
+button,
+input {
+  font-family: var(--font);
+  font-size: inherit;
+  text-align: inherit;
+}
+
 #root {
-  min-height: 100vh;
   min-width: 100vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
