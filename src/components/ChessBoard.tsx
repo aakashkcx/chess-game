@@ -9,6 +9,7 @@ import {
   index120To64,
   index64To120,
 } from "@aakashkcx/chess-engine";
+import clsx from "clsx";
 import { useMemo, useState } from "react";
 
 import { ChessSquare } from "./ChessSquare";
@@ -23,7 +24,13 @@ interface ChessBoardProps {
   makeMove: (start: Index64, target: Index64) => boolean;
 }
 
-export function ChessBoard({ board, color, moves, makeMove }: ChessBoardProps) {
+export function ChessBoard({
+  board,
+  player,
+  color,
+  moves,
+  makeMove,
+}: ChessBoardProps) {
   const [selected, setSelected] = useState<Index64>();
 
   const moveSquares = useMemo<Set<Index64>>(() => {
@@ -49,8 +56,10 @@ export function ChessBoard({ board, color, moves, makeMove }: ChessBoardProps) {
     };
   }
 
+  const className = clsx("chess-board", player === Color.Black && "flipped");
+
   return (
-    <div className="chess-board">
+    <div className={className}>
       {board.map((piece, index) => (
         <ChessSquare
           key={index}
