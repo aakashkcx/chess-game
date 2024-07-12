@@ -8,7 +8,8 @@ import { useChessGame } from "../hooks/useChessGame";
 import "./ChessAnalysis.css";
 
 export function ChessAnalysis() {
-  const { board, fen, color, moves, ply, makeMove, takeBack } = useChessGame();
+  const { board, fen, color, moves, ply, previous, makeMove, takeBack } =
+    useChessGame();
 
   const [player, setPlayer] = useState(Color.White);
 
@@ -35,6 +36,7 @@ export function ChessAnalysis() {
           player={player}
           color={color}
           moves={moves}
+          previous={previous}
           makeMove={makeMove}
         />
         <div className="controls">

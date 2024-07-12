@@ -4,6 +4,7 @@ import {
   ColorPiece,
   Index64,
   Move,
+  NO_MOVE,
   getStart,
   getTarget,
   index64To120,
@@ -24,6 +25,8 @@ interface GameData {
   moves: Move[];
   /** The number of plies played. */
   ply: number;
+  /** The previous move played, or NO_MOVE. */
+  previous: Move;
 }
 
 /**
@@ -38,6 +41,7 @@ function getGameData(game: ChessGame): GameData {
     color: game.activeColor,
     moves: game.generateMoves(),
     ply: game.ply,
+    previous: game.ply > 0 ? game.moveList[game.ply - 1] : NO_MOVE,
   };
 }
 

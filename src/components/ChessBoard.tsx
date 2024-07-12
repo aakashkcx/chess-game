@@ -3,6 +3,7 @@ import {
   ColorPiece,
   Index64,
   Move,
+  NO_MOVE,
   getColor,
   getStart,
   getTarget,
@@ -21,6 +22,7 @@ interface ChessBoardProps {
   player: Color;
   color: Color;
   moves: Move[];
+  previous?: Move;
   makeMove: (start: Index64, target: Index64) => boolean;
 }
 
@@ -29,6 +31,7 @@ export function ChessBoard({
   player,
   color,
   moves,
+  previous,
   makeMove,
 }: ChessBoardProps) {
   const [selected, setSelected] = useState<Index64>();
@@ -41,6 +44,11 @@ export function ChessBoard({
       .map(index120To64);
     return new Set(targets);
   }, [selected, moves]);
+
+  const previousSquares = useMemo<Set<Index64>>(() => {
+    if (!previous || previous === NO_MOVE) return new Set();
+    return new Set([getStart(previous), getTarget(previous)].map(index120To64));
+  }, [previous]);
 
   function selectSquare(index: Index64) {
     return function () {
@@ -67,6 +75,7 @@ export function ChessBoard({
           piece={piece}
           selected={index == selected}
           move={moveSquares.has(index)}
+          previous={previousSquares.has(index)}
           onClick={selectSquare(index)}
         />
       ))}
