@@ -1,0 +1,33 @@
+.chess-analysis {
+  display: flex;
+  flex-direction: column;
+}
+
+.chess-analysis .fen {
+  width: var(--max);
+  padding: 0.5rem 1rem;
+  border: 1px solid gray;
+  font-family: monospace;
+  font-size: 1rem;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.chess-analysis .controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  font-size: 1.25rem;
+}
+
+.chess-analysis .controls .color {
+  flex-grow: 1;
+  padding: 0.5rem 1rem;
+  border: 1px solid gray;
+}
+
+.chess-analysis .controls button {
+  padding: 0.5rem 1rem;
+  border: 1px solid gray;
+}

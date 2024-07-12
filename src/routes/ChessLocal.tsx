@@ -1,4 +1,5 @@
 import { Color } from "@aakashkcx/chess-engine";
+import { useEffect, useState } from "react";
 
 import { BackButton } from "../components/BackButton";
 import { ChessBoard } from "../components/ChessBoard";
@@ -9,21 +10,31 @@ import "./ChessLocal.css";
 export function ChessLocal() {
   const { board, fen, color, moves, ply, makeMove, takeBack } = useChessGame();
 
+  const [player, setPlayer] = useState(Color.White);
+
+  useEffect(() => setPlayer(color), [color]);
+
   return (
     <>
       <BackButton />
-      <div>
+      <div className="chess-local">
+        <div className="fen">{fen}</div>
         <ChessBoard
           board={board}
-          player={Color.White}
+          player={player}
           color={color}
           moves={moves}
           makeMove={makeMove}
         />
-        <div>{fen}</div>
-        <button onClick={() => takeBack()} disabled={ply < 1}>
-          Take Back
-        </button>
+        <div className="controls">
+          <div className="color">
+            {color === Color.White ? "White" : "Black"}
+          </div>
+          <button onClick={() => setPlayer(player ^ 1)}>Flip Board</button>
+          <button onClick={() => takeBack()} disabled={ply < 1}>
+            Take Back
+          </button>
+        </div>
       </div>
     </>
   );
