@@ -1,5 +1,5 @@
 import { Color } from "@aakashkcx/chess-engine";
-import { KeyboardEvent, useState } from "react";
+import { KeyboardEvent, useEffect, useState } from "react";
 
 import { BackButton } from "../components/BackButton";
 import { ChessBoard } from "../components/ChessBoard";
@@ -14,6 +14,8 @@ export function ChessAnalysis() {
   const [player, setPlayer] = useState(Color.White);
 
   const [fenInput, setFenInput] = useState(fen);
+
+  useEffect(() => setFenInput(fen), [fen]);
 
   function fenInputDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.key !== "Enter") return;
