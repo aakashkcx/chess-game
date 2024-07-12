@@ -1,4 +1,4 @@
-import { Color } from "@aakashkcx/chess-engine";
+import { Color, swapColor } from "@aakashkcx/chess-engine";
 import { useEffect, useState } from "react";
 
 import { BackButton } from "../components/BackButton";
@@ -32,7 +32,9 @@ export function ChessLocal() {
           <div className="color">
             {color === Color.White ? "White" : "Black"}
           </div>
-          <button onClick={() => setPlayer(player ^ 1)}>Flip Board</button>
+          <button onClick={() => setPlayer(swapColor(player))}>
+            Flip Board
+          </button>
           <button onClick={() => takeBack()} disabled={ply < 1}>
             Take Back
           </button>

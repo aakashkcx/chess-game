@@ -50,7 +50,7 @@ function getGameData(game: ChessGame): GameData {
  */
 export function useChessGame() {
   const ref = useRef(new ChessGame());
-  const gameRef = ref.current;
+  let gameRef = ref.current;
 
   const [game, setGame] = useState(getGameData(gameRef));
 
@@ -76,6 +76,7 @@ export function useChessGame() {
   /**
    * Take back the move on the chessboard.
    * @param twice Whether to take back two moves (same side) or one move (switch sides).
+   * @throws {Error} If take back not possible.
    */
   function takeBack(twice: boolean = false) {
     if (game.ply < (twice ? 2 : 1)) return alert("Cannot take back!");
@@ -94,5 +95,17 @@ export function useChessGame() {
     return move;
   }
 
-  return { ...game, makeMove, takeBack, search };
+  /**
+   * Create a new chess game.
+   * @param fen The starting Forsyth–Edwards Notation (FEN) string.
+   *  If empty FEN string, game will start with empty board.
+   * @throws {Error} If FEN string is invalid.
+   */
+  function newGame(fen?: string) {
+    const game = new ChessGame(fen);
+    gameRef = ref.current = game;
+    setGame(getGameData(gameRef));
+  }
+
+  return { ...game, makeMove, takeBack, search, newGame };
 }

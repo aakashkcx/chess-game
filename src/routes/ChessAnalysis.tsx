@@ -1,4 +1,4 @@
-import { Color } from "@aakashkcx/chess-engine";
+import { Color, swapColor } from "@aakashkcx/chess-engine";
 import { KeyboardEvent, useEffect, useState } from "react";
 
 import { BackButton } from "../components/BackButton";
@@ -8,8 +8,17 @@ import { useChessGame } from "../hooks/useChessGame";
 import "./ChessAnalysis.css";
 
 export function ChessAnalysis() {
-  const { board, fen, color, moves, ply, previous, makeMove, takeBack } =
-    useChessGame();
+  const {
+    board,
+    fen,
+    color,
+    moves,
+    ply,
+    previous,
+    makeMove,
+    takeBack,
+    newGame,
+  } = useChessGame();
 
   const [player, setPlayer] = useState(Color.White);
 
@@ -19,7 +28,11 @@ export function ChessAnalysis() {
 
   function fenInputDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.key !== "Enter") return;
-    alert();
+    try {
+      newGame(fenInput);
+    } catch (error) {
+      if (error instanceof Error) alert(error.message);
+    }
   }
 
   return (
@@ -45,10 +58,13 @@ export function ChessAnalysis() {
           <div className="color">
             {color === Color.White ? "White" : "Black"}
           </div>
-          <button onClick={() => setPlayer(player ^ 1)}>Flip Board</button>
+          <button onClick={() => setPlayer(swapColor(player))}>
+            Flip Board
+          </button>
           <button onClick={() => takeBack()} disabled={ply < 1}>
             Take Back
           </button>
+          <button onClick={() => newGame()}>Reset</button>
         </div>
       </div>
     </>
