@@ -1,5 +1,5 @@
 import { Color, swapColor } from "@aakashkcx/chess-engine";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { BackButton } from "../components/BackButton";
 import { ChessBoard } from "../components/ChessBoard";
@@ -11,7 +11,7 @@ export function ChessAI() {
   const { board, fen, color, moves, ply, previous, makeMove, takeBack } =
     useChessGame();
 
-  const [player, setPlayer] = useState(Color.White);
+  const [side, setSide] = useState(Color.White);
 
   return (
     <>
@@ -20,7 +20,7 @@ export function ChessAI() {
         <div className="fen">{fen}</div>
         <ChessBoard
           board={board}
-          player={player}
+          side={side}
           color={color}
           moves={moves}
           previous={previous}
@@ -30,9 +30,7 @@ export function ChessAI() {
           <div className="color">
             {color === Color.White ? "White" : "Black"}
           </div>
-          <button onClick={() => setPlayer(swapColor(player))}>
-            Flip Board
-          </button>
+          <button onClick={() => setSide(swapColor(side))}>Flip Board</button>
           <button onClick={() => takeBack()} disabled={ply < 1}>
             Take Back
           </button>

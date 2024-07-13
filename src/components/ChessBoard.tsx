@@ -19,7 +19,7 @@ import "./ChessBoard.css";
 
 interface ChessBoardProps {
   board: ColorPiece[];
-  player: Color;
+  side: Color;
   color: Color;
   moves: Move[];
   previous?: Move;
@@ -28,7 +28,7 @@ interface ChessBoardProps {
 
 export function ChessBoard({
   board,
-  player,
+  side,
   color,
   moves,
   previous,
@@ -64,7 +64,7 @@ export function ChessBoard({
     };
   }
 
-  const className = clsx("chess-board", player === Color.Black && "flipped");
+  const className = clsx("chess-board", side === Color.Black && "flipped");
 
   return (
     <div className={className}>
