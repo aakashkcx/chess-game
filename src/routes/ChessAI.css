@@ -1,0 +1,33 @@
+.chess-ai {
+  display: flex;
+  flex-direction: column;
+}
+
+.chess-ai .fen {
+  width: var(--max);
+  padding: 0.5rem 1rem;
+  border: 1px solid gray;
+  font-family: monospace;
+  font-size: 1rem;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.chess-ai .controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.chess-ai .controls .color {
+  flex-grow: 1;
+  padding: 0.5rem 1rem;
+  border: 1px solid gray;
+  font-weight: bold;
+}
+
+.chess-ai .controls button {
+  padding: 0.5rem 1rem;
+  border: 1px solid gray;
+}
