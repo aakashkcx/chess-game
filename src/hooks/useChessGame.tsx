@@ -86,13 +86,16 @@ export function useChessGame() {
   }
 
   /**
-   * Search for the best move.
+   * Search for the best move and make the move on the chessboard.
    * @param timeMS The search time in milliseconds, default 1000 ms.
-   * @returns The best move.
+   * @returns Whether a move was found that was legal and completed.
    */
-  function search(timeMS?: number): Move {
+  function makeAIMove(timeMS?: number) {
     const move = gameRef.search(timeMS);
-    return move;
+    if (!move) return false;
+    const legal = gameRef.makeMove(move);
+    setGame(getGameData(gameRef));
+    return legal;
   }
 
   /**
@@ -107,5 +110,5 @@ export function useChessGame() {
     setGame(getGameData(gameRef));
   }
 
-  return { ...game, makeMove, takeBack, search, newGame };
+  return { ...game, makeMove, takeBack, makeAIMove, newGame };
 }
