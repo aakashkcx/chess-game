@@ -20,7 +20,7 @@ interface GameData {
   /** The Forsyth–Edwards Notation (FEN) string. */
   fen: string;
   /** The next color to move. */
-  color: Color;
+  activeColor: Color;
   /** The array of legal moves that can be made. */
   moves: Move[];
   /** The number of plies played. */
@@ -38,7 +38,7 @@ function getGameData(game: ChessGame): GameData {
   return {
     board: game.getBoard(),
     fen: game.getFEN(),
-    color: game.activeColor,
+    activeColor: game.activeColor,
     moves: game.generateMoves(),
     ply: game.ply,
     previous: game.ply > 0 ? game.moveList[game.ply - 1] : NO_MOVE,

@@ -8,12 +8,12 @@ import { useChessGame } from "../hooks/useChessGame";
 import "./ChessLocal.css";
 
 export function ChessLocal() {
-  const { board, fen, color, moves, ply, previous, makeMove, takeBack } =
+  const { board, fen, activeColor, moves, ply, previous, makeMove, takeBack } =
     useChessGame();
 
-  const [side, setSide] = useState(Color.White);
+  const [viewColor, setViewColor] = useState(Color.White);
 
-  useEffect(() => setSide(color), [color]);
+  useEffect(() => setViewColor(activeColor), [activeColor]);
 
   return (
     <>
@@ -22,17 +22,19 @@ export function ChessLocal() {
         <div className="fen">{fen}</div>
         <ChessBoard
           board={board}
-          side={side}
-          color={color}
+          viewColor={viewColor}
+          activeColor={activeColor}
           moves={moves}
           previous={previous}
           makeMove={makeMove}
         />
         <div className="controls">
           <div className="color">
-            {color === Color.White ? "White" : "Black"}
+            {activeColor === Color.White ? "White" : "Black"}
           </div>
-          <button onClick={() => setSide(swapColor(side))}>Flip Board</button>
+          <button onClick={() => setViewColor(swapColor(viewColor))}>
+            Flip Board
+          </button>
           <button onClick={() => takeBack()} disabled={ply < 1}>
             Take Back
           </button>

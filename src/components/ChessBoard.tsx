@@ -19,8 +19,8 @@ import "./ChessBoard.css";
 
 interface ChessBoardProps {
   board: ColorPiece[];
-  side: Color;
-  color: Color;
+  viewColor: Color;
+  activeColor: Color;
   moves: Move[];
   previous?: Move;
   makeMove: (start: Index64, target: Index64) => boolean;
@@ -28,8 +28,8 @@ interface ChessBoardProps {
 
 export function ChessBoard({
   board,
-  side,
-  color,
+  viewColor,
+  activeColor,
   moves,
   previous,
   makeMove,
@@ -54,17 +54,17 @@ export function ChessBoard({
     return function () {
       const piece = board[index];
       if (selected === undefined) {
-        if (getColor(piece) === color) return setSelected(index);
+        if (getColor(piece) === activeColor) return setSelected(index);
       } else {
         if (selected === index) return setSelected(undefined);
-        if (getColor(piece) === color) return setSelected(index);
+        if (getColor(piece) === activeColor) return setSelected(index);
         if (moveSquares.has(index)) makeMove(selected, index);
         setSelected(undefined);
       }
     };
   }
 
-  const className = clsx("chess-board", side === Color.Black && "flipped");
+  const className = clsx("chess-board", viewColor === Color.Black && "flipped");
 
   return (
     <div className={className}>

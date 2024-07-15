@@ -11,7 +11,7 @@ export function ChessAnalysis() {
   const {
     board,
     fen,
-    color,
+    activeColor,
     moves,
     ply,
     previous,
@@ -20,7 +20,7 @@ export function ChessAnalysis() {
     newGame,
   } = useChessGame();
 
-  const [side, setSide] = useState(Color.White);
+  const [viewColor, setViewColor] = useState(Color.White);
 
   const [fenInput, setFenInput] = useState(fen);
 
@@ -48,17 +48,19 @@ export function ChessAnalysis() {
         />
         <ChessBoard
           board={board}
-          side={side}
-          color={color}
+          viewColor={viewColor}
+          activeColor={activeColor}
           moves={moves}
           previous={previous}
           makeMove={makeMove}
         />
         <div className="controls">
           <div className="color">
-            {color === Color.White ? "White" : "Black"}
+            {activeColor === Color.White ? "White" : "Black"}
           </div>
-          <button onClick={() => setSide(swapColor(side))}>Flip Board</button>
+          <button onClick={() => setViewColor(swapColor(viewColor))}>
+            Flip Board
+          </button>
           <button onClick={() => takeBack()} disabled={ply < 1}>
             Take Back
           </button>

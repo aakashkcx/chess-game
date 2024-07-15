@@ -7,11 +7,13 @@ import { useChessGame } from "../hooks/useChessGame";
 
 import "./ChessAI.css";
 
+const TIME_DELAY_MS = 250;
+
 export function ChessAI() {
   const {
     board,
     fen,
-    color,
+    activeColor,
     moves,
     ply,
     previous,
@@ -20,15 +22,16 @@ export function ChessAI() {
     makeAIMove,
   } = useChessGame();
 
-  const [side, setSide] = useState(Color.White);
+  const [viewColor, setViewColor] = useState(Color.White);
 
-  const [player] = useState(Color.White);
+  const [playerColor] = useState(Color.White);
 
-  const [time] = useState(1000);
+  const [timeMS] = useState(1000);
 
   useEffect(() => {
-    if (color !== player) setTimeout(makeAIMove, 0, time);
-  }, [color]);
+    if (activeColor !== playerColor)
+      setTimeout(makeAIMove, TIME_DELAY_MS, timeMS);
+  }, [activeColor]);
 
   return (
     <>
@@ -37,18 +40,20 @@ export function ChessAI() {
         <div className="fen">{fen}</div>
         <ChessBoard
           board={board}
-          side={side}
-          color={player}
+          viewColor={viewColor}
+          activeColor={playerColor}
           moves={moves}
           previous={previous}
           makeMove={makeMove}
         />
         <div className="controls">
           <div className="color">
-            {color === Color.White ? "White" : "Black"}
-            {color !== player && " (AI)"}
+            {activeColor === Color.White ? "White" : "Black"}
+            {activeColor !== playerColor && " (AI)"}
           </div>
-          <button onClick={() => setSide(swapColor(side))}>Flip Board</button>
+          <button onClick={() => setViewColor(swapColor(viewColor))}>
+            Flip Board
+          </button>
           <button onClick={() => takeBack(true)} disabled={ply < 2}>
             Take Back
           </button>
