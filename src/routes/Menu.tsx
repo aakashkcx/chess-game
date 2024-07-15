@@ -12,6 +12,13 @@ export function Menu() {
         <Link to="/online">Play vs Online</Link>
         <Link to="/analysis">Analysis Board</Link>
       </nav>
+      <small>
+        Created by <a href="https://github.com/aakashkcx">Aakash Kc</a>
+        <br />
+        <a href="https://github.com/aakashkcx/chess-game">Source Code</a>
+        <br />
+        <a href="https://github.com/aakashkcx/chess-engine">Powered By</a>
+      </small>
     </div>
   );
 }
