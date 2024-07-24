@@ -5,7 +5,7 @@ import { BackButton } from "../components/BackButton";
 import { ChessBoard } from "../components/ChessBoard";
 import { useChessGame } from "../hooks/useChessGame";
 
-import "./ChessAI.css";
+import styles from "./ChessAI.module.css";
 
 const TIME_DELAY_MS = 250;
 
@@ -36,8 +36,8 @@ export function ChessAI() {
   return (
     <>
       <BackButton />
-      <div className="chess-ai">
-        <div className="fen">{fen}</div>
+      <div className={styles.chessAI}>
+        <div className={styles.fen}>{fen}</div>
         <ChessBoard
           board={board}
           viewColor={viewColor}
@@ -46,8 +46,8 @@ export function ChessAI() {
           previous={previous}
           makeMove={makeMove}
         />
-        <div className="controls">
-          <div className="color">
+        <div className={styles.controls}>
+          <div className={styles.color}>
             {activeColor === Color.White ? "White" : "Black"}
             {activeColor !== playerColor && " (AI)"}
           </div>

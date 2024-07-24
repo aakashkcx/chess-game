@@ -1,9 +1,9 @@
-.chess-local {
+.chessAnalysis {
   display: flex;
   flex-direction: column;
 }
 
-.chess-local .fen {
+.chessAnalysis .fen {
   width: var(--max);
   padding: 0.5rem 1rem;
   border: 1px solid gray;
@@ -13,21 +13,21 @@
   white-space: nowrap;
 }
 
-.chess-local .controls {
+.chessAnalysis .controls {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
 }
 
-.chess-local .controls .color {
+.chessAnalysis .controls .color {
   flex-grow: 1;
   padding: 0.5rem 1rem;
   border: 1px solid gray;
   font-weight: bold;
 }
 
-.chess-local .controls button {
+.chessAnalysis .controls button {
   padding: 0.5rem 1rem;
   border: 1px solid gray;
 }

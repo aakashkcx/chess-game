@@ -1,4 +1,4 @@
-.chess-board {
+.chessBoard {
   display: flex;
   flex-wrap: wrap-reverse;
   width: var(--max);
@@ -6,6 +6,6 @@
   border: 1px solid gray;
 }
 
-.chess-board.flipped {
+.chessBoard.flipped {
   flex-wrap: wrap;
 }

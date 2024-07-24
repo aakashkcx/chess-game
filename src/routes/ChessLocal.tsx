@@ -5,7 +5,7 @@ import { BackButton } from "../components/BackButton";
 import { ChessBoard } from "../components/ChessBoard";
 import { useChessGame } from "../hooks/useChessGame";
 
-import "./ChessLocal.css";
+import styles from "./ChessLocal.module.css";
 
 export function ChessLocal() {
   const { board, fen, activeColor, moves, ply, previous, makeMove, takeBack } =
@@ -18,8 +18,8 @@ export function ChessLocal() {
   return (
     <>
       <BackButton />
-      <div className="chess-local">
-        <div className="fen">{fen}</div>
+      <div className={styles.chessLocal}>
+        <div className={styles.fen}>{fen}</div>
         <ChessBoard
           board={board}
           viewColor={viewColor}
@@ -28,8 +28,8 @@ export function ChessLocal() {
           previous={previous}
           makeMove={makeMove}
         />
-        <div className="controls">
-          <div className="color">
+        <div className={styles.controls}>
+          <div className={styles.color}>
             {activeColor === Color.White ? "White" : "Black"}
           </div>
           <button onClick={() => setViewColor(swapColor(viewColor))}>

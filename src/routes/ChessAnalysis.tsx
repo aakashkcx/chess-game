@@ -5,7 +5,7 @@ import { BackButton } from "../components/BackButton";
 import { ChessBoard } from "../components/ChessBoard";
 import { useChessGame } from "../hooks/useChessGame";
 
-import "./ChessAnalysis.css";
+import styles from "./ChessAnalysis.module.css";
 
 export function ChessAnalysis() {
   const {
@@ -38,10 +38,10 @@ export function ChessAnalysis() {
   return (
     <>
       <BackButton />
-      <div className="chess-analysis">
+      <div className={styles.chessAnalysis}>
         <input
           type="text"
-          className="fen"
+          className={styles.fen}
           value={fenInput}
           onChange={(e) => setFenInput(e.target.value)}
           onKeyDown={fenInputDown}
@@ -54,8 +54,8 @@ export function ChessAnalysis() {
           previous={previous}
           makeMove={makeMove}
         />
-        <div className="controls">
-          <div className="color">
+        <div className={styles.controls}>
+          <div className={styles.color}>
             {activeColor === Color.White ? "White" : "Black"}
           </div>
           <button onClick={() => setViewColor(swapColor(viewColor))}>

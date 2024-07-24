@@ -1,9 +1,9 @@
-.chess-ai {
+.chessAI {
   display: flex;
   flex-direction: column;
 }
 
-.chess-ai .fen {
+.chessAI .fen {
   width: var(--max);
   padding: 0.5rem 1rem;
   border: 1px solid gray;
@@ -13,21 +13,21 @@
   white-space: nowrap;
 }
 
-.chess-ai .controls {
+.chessAI .controls {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
 }
 
-.chess-ai .controls .color {
+.chessAI .controls .color {
   flex-grow: 1;
   padding: 0.5rem 1rem;
   border: 1px solid gray;
   font-weight: bold;
 }
 
-.chess-ai .controls button {
+.chessAI .controls button {
   padding: 0.5rem 1rem;
   border: 1px solid gray;
 }

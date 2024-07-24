@@ -14,7 +14,7 @@ import QL from "../assets/qlt.svg";
 import RD from "../assets/rdt.svg";
 import RL from "../assets/rlt.svg";
 
-import "./ChessSquare.css";
+import styles from "./ChessSquare.module.css";
 
 interface ChessSquareProps {
   index: number;
@@ -36,16 +36,16 @@ export function ChessSquare({
   const svg = getPieceSVG(piece);
 
   const className = clsx(
-    "chess-square",
-    isDark(index) ? "dark" : "light",
-    selected && "selected",
-    move && "move",
-    previous && "previous"
+    styles.chessSquare,
+    isDark(index) ? styles.dark : styles.light,
+    selected && styles.selected,
+    move && styles.move,
+    previous && styles.previous
   );
 
   return (
     <div className={className} onClick={onClick}>
-      {svg && <img src={svg} className="chess-piece" />}
+      {svg && <img src={svg} className={styles.chessPiece} />}
     </div>
   );
 }

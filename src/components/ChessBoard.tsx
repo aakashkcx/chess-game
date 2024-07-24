@@ -15,7 +15,7 @@ import { useMemo, useState } from "react";
 
 import { ChessSquare } from "./ChessSquare";
 
-import "./ChessBoard.css";
+import styles from "./ChessBoard.module.css";
 
 interface ChessBoardProps {
   board: ColorPiece[];
@@ -64,7 +64,10 @@ export function ChessBoard({
     };
   }
 
-  const className = clsx("chess-board", viewColor === Color.Black && "flipped");
+  const className = clsx(
+    styles.chessBoard,
+    viewColor === Color.Black && styles.flipped
+  );
 
   return (
     <div className={className}>
