@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-import "./Menu.css";
+import styles from "./Menu.module.css";
 
 export function Menu() {
   return (
-    <div className="menu">
+    <div className={styles.menu}>
       <h1>Chess Game</h1>
       <nav>
         <Link to="/ai">Play vs AI</Link>
