@@ -16,14 +16,14 @@ import RL from "../assets/rlt.svg";
 
 import styles from "./ChessSquare.module.css";
 
-interface ChessSquareProps {
+type ChessSquareProps = {
   index: number;
   piece: ColorPiece;
   selected?: boolean;
   move?: boolean;
   previous?: boolean;
   onClick?: () => void;
-}
+};
 
 export function ChessSquare({
   index,

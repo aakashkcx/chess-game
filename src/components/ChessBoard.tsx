@@ -17,14 +17,14 @@ import { ChessSquare } from "./ChessSquare";
 
 import styles from "./ChessBoard.module.css";
 
-interface ChessBoardProps {
+type ChessBoardProps = {
   board: ColorPiece[];
   viewColor: Color;
   activeColor: Color;
   moves: Move[];
   previous?: Move;
   makeMove: (start: Index64, target: Index64) => boolean;
-}
+};
 
 export function ChessBoard({
   board,

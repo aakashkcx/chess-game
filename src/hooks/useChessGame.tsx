@@ -14,7 +14,7 @@ import { useRef, useState } from "react";
 /**
  * A projection of the chess game data for use in React state.
  */
-interface GameData {
+type GameData = {
   /** The chess board, of length 64. */
   board: ColorPiece[];
   /** The Forsyth–Edwards Notation (FEN) string. */
@@ -27,7 +27,7 @@ interface GameData {
   ply: number;
   /** The previous move played, or NO_MOVE. */
   previous: Move;
-}
+};
 
 /**
  * Get the game data of a chess game.
